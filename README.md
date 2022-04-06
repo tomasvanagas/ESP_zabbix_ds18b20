@@ -2,11 +2,11 @@
 
 
   
-[SetUp ESP](https://github.com/tomasvanagas/ESP_zabbix_ds18b20/blob/master/README_ESP.md) 
+[instructions for seting up ESP](https://github.com/tomasvanagas/ESP_zabbix_ds18b20/blob/master/README_ESP.md) 
   
   
   
-[SetUp Zabbix](https://github.com/tomasvanagas/ESP_zabbix_ds18b20/blob/master/README_Zabbix.md)  
+[instructions for seting up Zabbix](https://github.com/tomasvanagas/ESP_zabbix_ds18b20/blob/master/README_Zabbix.md)  
   
   
   
