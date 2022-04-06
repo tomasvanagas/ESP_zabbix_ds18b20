@@ -1,5 +1,5 @@
-// Copyright (c) 2020 Tomas Vanagas, Eimantas Rebzdys
-// Copyright (c) 2020 Vilnius university, Kaunas faculty
+// Copyright (c) 2022 Tomas Vanagas, Eimantas Rebzdys
+// Copyright (c) 2022 Vilnius university, Kaunas faculty
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,15 +10,19 @@
 
 ESP8266ZabbixSender zSender;
 
-/* WiFi settings */
+
+// Zabbix server setting
+#define SERVERADDR 192, 168, 0, 123 // IP Address example 192.168.0.123
+#define ZABBIXPORT 10051
+#define ZABBIXAGHOST "ESP"
+#define ZABBIX_KEY "ServerRoom"
+String espHostname = "ESP-ServerRoom";
+// WiFi settings
 String ssid = "AndroidAP";
 String pass = "12345678";
 
-/* Zabbix server setting */
-#define SERVERADDR 192, 168, 0, 123 // IP Address example 192.168.0.123
-#define ZABBIXPORT 10051			
-#define ZABBIXAGHOST "ESP"
-#define ZABBIX_KEY "ServerRoom"
+
+
 
 
 // DS18B20
@@ -28,7 +32,7 @@ DallasTemperature DS18B20(&oneWire);
 
 // WiFi connectivity checker
 boolean checkConnection() {
-  Serial.print("Checking Wifi");
+  Serial.println("Checking Wifi");
   while (true) {
     if (WiFi.status() == WL_CONNECTED) {
       Serial.println("Wifi connected!");
@@ -45,12 +49,15 @@ void setup() {
 
   // Initialize terminal
   Serial.begin(115200);
+  delay(1000);
   Serial.println();
+  Serial.println("Initializing Zabbix Temperature sensor...");
 
   // Configure WiFi
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
+  WiFi.hostname(espHostname.c_str());
   WiFi.begin(ssid.c_str(), pass.c_str());
   
   // Wait for connectivity
