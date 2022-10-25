@@ -10,8 +10,9 @@
 
 ESP8266ZabbixSender zSender;
 
+////////////////////////////////////// USER SETTINGS //////////////////////////////////////
 
-// Zabbix server setting
+// ******** Example ********
 #define SERVERADDR 192, 168, 0, 123 // IP Address example 192.168.0.123
 #define ZABBIXPORT 10051
 #define ZABBIXAGHOST "ESP"
@@ -21,6 +22,7 @@ String espHostname = "ESP-ServerRoom";
 String ssid = "AndroidAP";
 String pass = "12345678";
 
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
